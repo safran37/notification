@@ -1,11 +1,19 @@
-const circle = document.querySelectorAll(".circle");
+const unread = document.querySelectorAll(".unread");
 const mark = document.querySelector(".mark");
 const number = document.querySelector(".number");
-const columns = document.querySelectorAll(".columns");
-const special = document.querySelectorAll(".special");
+
 mark.addEventListener("click", () => {
-  circle.forEach((minicircle) => {
-    minicircle.style.display = "none";
-    number.innerText = "0";
+  unread.forEach((message) => {
+    message.classList.remove("unread");
+  });
+  const newUnread = document.querySelectorAll(".unread");
+  number.innerText = newUnread.length;
+});
+
+unread.forEach((message) => {
+  message.addEventListener("click", () => {
+    message.classList.remove("unread");
+    const newUnreadArray = document.querySelectorAll(".unread");
+    number.innerText = newUnreadArray.length;
   });
 });
